@@ -4,3 +4,12 @@
     align-items: center;
     border: 2px solid red;
 }
+.btn-class{
+    background: #f15d38;
+    border: none;
+    border-radius: 4px;
+
+}
+.btn-class p{
+    margin:10px 15px 10px 15px;
+}
