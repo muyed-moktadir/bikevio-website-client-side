@@ -1,0 +1,6 @@
+.bike-description{
+    display: grid;
+    grid-template-columns: 2fr 2.5fr;
+    align-items: center;
+    border: 2px solid red;
+}

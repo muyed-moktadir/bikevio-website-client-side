@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import "./Inventory.css"
 
 const Inventory = () => {
     const {id}=useParams();
@@ -12,11 +13,11 @@ const Inventory = () => {
         .then(data=>setBike(data))
     },[id])
     return (
-        <div className='bike'>
+        <div className='bike-description'>
         <div className='image'>
             <img src={bike.img} alt="" />
         </div>
-        <div  className='bike-details'>
+        <div  className='bike'>
             <h2>{bike.name}</h2>
             <div style={{textAlign:'justify'}}>
             <p title={bike.description}><strong>Description</strong>: {bike.description > 10? bike.description.slice(0,100) +'...': bike.description}</p>
