@@ -1,0 +1,67 @@
+.bike-container{
+    width: 400px;
+    height: 580px;
+    border: 1px solid #9ac9e6;
+    border-radius: 8px;
+    position: relative;
+}
+
+.image img{
+    width: 270px;
+    height: 200px;
+    border-radius: 8px;
+    margin: 7px;
+}
+.bike-details {
+    padding: 10px;
+}
+
+/* .btn {
+    width: 100%;
+    background: #ddad549c;
+    border-radius: 2px 2px 8px 8px;
+    border: none;
+} */
+
+.btn p{
+    font-weight: bold;
+    font-size: large;
+}
+
+ .btn{
+    width: 100%;
+    background: #f15d38;
+    border: none;
+    border-radius: 0px 0px 8px 8px;
+    position:absolute;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width:600px){
+    .bike-container{
+        width: 100%;
+        margin: 0%;
+    }
+  }
+
+  .btn{
+    width: 100%;
+    background: #f15d38c1;
+    border: none;
+    border-radius: 0px 0px 8px 8px;
+    position:absolute;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn .btn-text{
+    margin-right: 5px;
+}
+.btn:hover{
+    background-color: orange;
+    cursor: pointer;
+}
