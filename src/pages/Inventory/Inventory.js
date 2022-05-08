@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./Inventory.css";
 
 const Inventory = () => {
@@ -76,7 +77,7 @@ const handleSubmit = (event) => {
           supplier_name,
           price,
         });
-        alert("restock succesfully..!!")
+        toast("restock successfully..!!")
       });
   };
 

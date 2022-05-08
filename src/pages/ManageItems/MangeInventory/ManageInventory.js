@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ManageInventory = ({bike}) => {
-    const {_id,img,name,description,price,quantity,supplier_name} =bike;
+    const {img,name,description,price,quantity,supplier_name} =bike;
 
     return (
         <div className='bike-container'>
