@@ -5,9 +5,9 @@ import {
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import "./Login.css";
-import auth from "../../../firebase.init";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import auth from "../../../firebase.init";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -81,7 +81,7 @@ const Login = () => {
         </form>
         <p style={{ fontSize: "17px" }}>
           New to Here?{" "}
-          <Link className="form-link" to="/register">
+          <Link className="form-link" to={'/register'}>
             Create an account
           </Link>
           <p>
