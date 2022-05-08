@@ -4,9 +4,9 @@ import "./Inventory.css";
 
 const Inventory = () => {
   const { id } = useParams();
-  //   console.log("object", id);
-  const [bike,setBike] = useState([]);
-  const { _id, name, quantity, img, description, supplier_name, price } = bike;
+  const [bike, setBike] = useState([]);
+//   const [quantity1, setQuantity] = useState("");
+  const { _id, name, quantity,img, description, supplier_name, price } = bike;
   console.log("single bike :", bike);
 
   useEffect(() => {
@@ -16,39 +16,72 @@ const Inventory = () => {
       .then((data) => setBike(data));
   }, [quantity]);
 
-
-  const handleDeliver = id => {
+  const handleDeliver = (id) => {
     //   event.preventDefault()
     console.log("object", id);
     const newQuantity = quantity - 1;
     console.log("new quantity", newQuantity);
     const updateQuantity = { newQuantity };
 
-
     // TODO:send the particular quantity "PUT" method to server
     const url = `http://localhost:5000/inventory/${id}`;
-    fetch(url,{
-        method:'PUT',
-        headers:{
-            'content-type':'application/json'
-        },
-        body: JSON.stringify(updateQuantity),
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateQuantity),
     })
-    .then(res=>res.json())
-    .then(data=>{
-        console.log(data)
-        setBike({ _id, name, newQuantity, img, description, supplier_name, price });
-        // window.location.reload(false);
-         alert('user added successfully  ..!!!')
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setBike({
+          _id,
+          name,
+          newQuantity,
+          img,
+          description,
+          supplier_name,
+          price,
+        });
+        alert("user added successfully  ..!!!");
+      });
   };
 
-//   TODO:Restock 
-const handleRestock =(event)=>{
-    const quantity = event.target.value;
-    // const newQuantity = parseInt()
-    console.log("quantity",quantity);
-}   
+
+  //TODO:Restock
+//   const handleRestock = (event) => {
+//     setQuantity(event.target.value);
+//   };
+const handleSubmit = (event) => {
+    event.preventDefault();
+    const restock = event.target.restock.value
+    const newRestock = parseInt(restock) + quantity;
+    console.log("object", newRestock);
+    const updateRestock = {newRestock};
+
+    const url = `http://localhost:5000/inventory/${id}`;
+    fetch(url, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(updateRestock),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setBike({
+          _id,
+          name,
+          quantity,
+          img,
+          description,
+          supplier_name,
+          price,
+        });
+      });
+  };
 
   return (
     <div className="bike-description">
@@ -79,20 +112,22 @@ const handleRestock =(event)=>{
           }}
         >
           <div>
-            <button onClick={()=>handleDeliver(_id)} className="btn-class">
+            <button onClick={() => handleDeliver(_id)} className="btn-class">
               <p>Delivered</p>
             </button>
           </div>
           <div>
-            <input 
-              style={{ width: "60px", height: "30px" }}
-              type="number"
-              min="0"
-              name=""
-            />{" "}
-            <button onClick={handleRestock} className="btn-class">
-              <p>restock</p>
-            </button>
+            <form onSubmit={handleSubmit}>
+              <input
+                style={{ width: "60px", height: "30px" }}
+                type="number"
+                min="0"
+                name="restock"
+              />{" "}
+              <button type="submit" className="btn-class">
+                <p>restock</p>
+              </button>
+            </form>
           </div>
         </div>
       </div>
