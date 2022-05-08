@@ -44,21 +44,17 @@ const Inventory = () => {
           supplier_name,
           price,
         });
-        alert("user added successfully  ..!!!");
+        alert("delivered successfully  ..!!!");
       });
   };
 
 
-  //TODO:Restock
-//   const handleRestock = (event) => {
-//     setQuantity(event.target.value);
-//   };
 const handleSubmit = (event) => {
     event.preventDefault();
     const restock = event.target.restock.value
-    const newRestock = parseInt(restock) + quantity;
-    console.log("object", newRestock);
-    const updateRestock = {newRestock};
+    const newQuantity = parseInt(restock) + quantity;
+    // console.log("object", newRestock);
+    const updateQuantity = {newQuantity};
 
     const url = `http://localhost:5000/inventory/${id}`;
     fetch(url, {
@@ -66,7 +62,7 @@ const handleSubmit = (event) => {
       headers: {
         "content-type": "application/json"
       },
-      body: JSON.stringify(updateRestock),
+      body: JSON.stringify(updateQuantity),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -74,12 +70,13 @@ const handleSubmit = (event) => {
         setBike({
           _id,
           name,
-          quantity,
+          newQuantity,
           img,
           description,
           supplier_name,
           price,
         });
+        alert("restock succesfully..!!")
       });
   };
 
