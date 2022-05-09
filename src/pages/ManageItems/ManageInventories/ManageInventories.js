@@ -13,6 +13,7 @@ const ManageInventories = () => {
           <ManageInventory key={bike._id} bike={bike}></ManageInventory>
         ))}
       </div>
+      <button>add a new bike</button>
     </div>
   );
 };
