@@ -38,7 +38,7 @@ const Register = () => {
     navigate("/home");
   }
 
-  const handleCreateUser = (event) => {
+  const handleCreateUser = async (event) => {
     event.preventDefault();
     if (password.length < 6) {
       setError("Password must be 6 characters or longer");
@@ -49,7 +49,7 @@ const Register = () => {
       return;
     }
     createUserWithEmailAndPassword(email, password);
-    sendEmailVerification();
+    await sendEmailVerification();
   };
 
   return (
