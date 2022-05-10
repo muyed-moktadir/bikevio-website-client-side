@@ -3,7 +3,7 @@ import React from "react";
 
 const MyItem = ({ newBike }) => {
 
-    const {_id,bike,img,supplier,description} =newBike;
+    const {bike,img,supplier,description} =newBike;
   return (
     <div>
            <div className="bike-container">

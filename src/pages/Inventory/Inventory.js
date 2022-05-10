@@ -7,7 +7,7 @@ const Inventory = () => {
   const { id } = useParams();
   const [bike, setBike] = useState([]);
 //   const [quantity1, setQuantity] = useState("");
-  const { _id, name, quantity,img, description, supplier_name, price } = bike;
+  const { _id,name, quantity,img, description, supplier_name, price } = bike;
   console.log("single bike :", bike);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const Inventory = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBike(data));
-  }, [quantity]);
+  }, [quantity,id]);
 
   const handleDeliver = (id) => {
     //   event.preventDefault()

@@ -1,4 +1,6 @@
 .form-container {
+    display: grid;
+    grid-template-columns: 1fr;
     width: 600px;
     margin: 0 auto;
     box-sizing: border-box;
@@ -62,3 +64,54 @@
     font-size: 15px;
     cursor: pointer;
 }
+
+
+@media screen and (max-width:600px){
+    .form-container{
+        width: auto;
+        margin: 0%;
+        border: 2px solid rosybrown;
+        
+    }
+    .input-group{
+            font-size: auto;
+    }
+    .reset-btn{
+        width: auto;
+    height: auto;
+    }
+    .form-title {
+        font-size: auto;
+        color: #2A414F;
+        font-weight: auto;
+    }
+    .input-group{
+        margin-bottom: auto;
+    }
+    .input-group input {
+        width: auto;
+        height: auto;
+        border: 1px solid #95A0A7;
+        box-sizing: border-box;
+        border-radius: 5px;
+        font-size: auto;
+        padding-left: auto;
+    }
+    .form-submit{
+        width: auto;
+        height: auto;
+        background-color: rgba(255, 153, 0, 0.3);
+        border-radius: 5px;
+        border: none;
+        font-size: auto;
+        cursor: pointer;
+    }
+    .form-submit:hover{
+        background-color: rgba(255, 153, 0, 0.5);
+    }
+    
+    .form-link{
+        color: #FF9900;
+        text-decoration: none;
+    }
+  }

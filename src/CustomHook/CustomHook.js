@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const useBikevioItems = () => {
   const [bikes, setBikes] = useState([]);
+  console.log(bikes)
 
   useEffect(() => {
     fetch("http://localhost:5000/inventory")

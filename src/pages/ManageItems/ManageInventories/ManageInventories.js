@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import useBikevioItems from "../../../CustomHook/CustomHook";
 import ManageInventory from "../MangeInventory/ManageInventory";
 import "./ManageInventories.css";

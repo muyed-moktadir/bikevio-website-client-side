@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   useSendPasswordResetEmail,
@@ -8,6 +8,8 @@ import "./Login.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import auth from "../../../firebase.init";
+import axios from "axios";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -22,22 +24,30 @@ const Login = () => {
 
   const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
-  const handleEmailBlur = (event) => {
-    setEmail(event.target.value);
-  };
+  // const handleEmailBlur = (event) => {
+  //   setEmail(event.target.value);
+  //   console.log(email);
+  // };
 
-  const handlePasswordBlur = (event) => {
-    setPassword(event.target.value);
-  };
+  // const handlePasswordBlur = (event) => {
+  //   setPassword(event.target.value);
+  //   console.log(password)
+  // };
 
   if (user) {
     navigate(from, { replace: true });
+    console.log(user);
   }
 
-  const handleUserLogIn = (event) => {
+  const handleUserLogIn =async (event) => {
     event.preventDefault();
-    signInWithEmailAndPassword(email, password);
-    
+
+     await signInWithEmailAndPassword(email, password);
+    console.log(email,password);
+    const {data} = await axios.post('http://localhost:5000/login',{email})
+    localStorage.setItem('accessToken',data.accessToken)
+     navigate(from, { replace: true });
+   
   };
 
   const resetEmail = (event) => {
@@ -57,7 +67,7 @@ const Login = () => {
             </label>
             <input
               style={{ fontSize: "18px" }}
-              onBlur={handleEmailBlur}
+              // onBlur={handleEmailBlur}
               type="email"
               name="email"
               required
@@ -69,7 +79,7 @@ const Login = () => {
             </label>
             <input
               style={{ fontSize: "18px" }}
-              onBlur={handlePasswordBlur}
+              // onBlur={handlePasswordBlur}
               type="password"
               name="password"
               required

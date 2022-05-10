@@ -12,7 +12,7 @@ const Header = () => {
       <nav>
         <CustomLink to="/">Home</CustomLink>
         <CustomLink to="/inventory">Manage Inventories</CustomLink>
-        {user?.uid ? (
+        {user ? (
           <nav>
             <CustomLink to="/additem">Add item</CustomLink>
             <CustomLink to="/myitems">Myitems</CustomLink>

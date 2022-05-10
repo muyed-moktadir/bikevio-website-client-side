@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import "./Register.css";
@@ -12,6 +13,8 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const [createUserWithEmailAndPassword, user] =
     useCreateUserWithEmailAndPassword(auth);
@@ -35,13 +38,13 @@ const Register = () => {
   };
 
   if (user) {
-    navigate("/home");
+    navigate(from, { replace: true });
   }
 
   const handleCreateUser = async (event) => {
     event.preventDefault();
-    if (password.length < 6) {
-      setError("Password must be 6 characters or longer");
+    if (password.length < 4) {
+      setError(toast("password must be 4 "));
       return;
     }
     if (password !== confirmPassword) {

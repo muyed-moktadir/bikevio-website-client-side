@@ -18,14 +18,15 @@ const AddItem = () => {
 
    
      const addBike = { bike, description,supplier,img,email,quantity,price };
+     console.log(addBike);
 
     // // TODO:send the user post method to backend server
     fetch("http://localhost:5000/newItem", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "content-type": "application/json"
       },
-      body: JSON.stringify(addBike),
+      body: JSON.stringify(addBike)
     })
       .then((res) => res.json())
       .then((data) => {
@@ -105,7 +106,7 @@ const AddItem = () => {
           </div>
           <div className="input-group">
             <label style={{ fontSize: "19px" }} htmlFor="name">
-              User email
+              User mail
             </label>
             <input type="email" value={user?.email} name="email" readOnly/>
           </div>
