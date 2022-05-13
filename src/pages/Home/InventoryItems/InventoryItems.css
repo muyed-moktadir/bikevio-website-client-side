@@ -5,9 +5,11 @@
     justify-content: center;
     justify-items: center;
     margin: 30px;
-    box-shadow: violet;
+    box-shadow: rgb(158, 42, 158);
     width: auto;
     margin-top:50px;
+    margin-bottom: 70px;
+    
   }
    
   @media screen and (max-width: 600px) {

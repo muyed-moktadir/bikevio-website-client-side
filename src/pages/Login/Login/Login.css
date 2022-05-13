@@ -2,14 +2,17 @@
     display: grid;
     grid-template-columns: 1fr;
     width: 600px;
-    margin: 0 auto;
+    margin:0px auto;
     box-sizing: border-box;
     border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid rosybrown;
-    margin-top: 20px;
+    margin-top: 50px;
+    height: auto;
+    margin-bottom: 80px;
+    background-color: #f0f4d9;
 }
 
 .form-title {
@@ -69,8 +72,10 @@
 @media screen and (max-width:600px){
     .form-container{
         width: auto;
-        margin: 0%;
+        height: auto;
+        margin: 50px;
         border: 2px solid rosybrown;
+        margin-bottom: 80px;
         
     }
     .input-group{
@@ -100,14 +105,15 @@
     .form-submit{
         width: auto;
         height: auto;
-        background-color: rgba(255, 153, 0, 0.3);
+        margin-top: 20px;
+        background-color: rgb(228, 138, 68);
         border-radius: 5px;
         border: none;
         font-size: auto;
         cursor: pointer;
     }
     .form-submit:hover{
-        background-color: rgba(255, 153, 0, 0.5);
+        background-color: rgba(122, 109, 89, 0.5);
     }
     
     .form-link{

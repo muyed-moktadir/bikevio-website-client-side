@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import auth from "../../../firebase.init";
 
 const ManageInventory = ({ bike }) => {
   const [bikes, setBikes] = useState([]);
   const { _id, img, name, description, price, quantity, supplier_name } = bike;
+  const [user] = useAuthState(auth);
+  const navigate =useNavigate()
 
   // TODO:Load all bikes from (app.get) api:
   useEffect(() => {
@@ -12,22 +17,27 @@ const ManageInventory = ({ bike }) => {
   }, []);
 
   const handleUserDelete = (id) => {
-    const proceed = window.confirm("are you sure want to delete??");
-    if (proceed) {
-      console.log("deleting the id", id);
-      const url = `http://localhost:5000/inventory/${id}`;
-      fetch(url,{
-        method:'DELETE',
-      })
-      .then(res=>res.json())
-      .then(data=>{
-          if(bike.deletedCount>0){
-            console.log("delete successfully");
-            const remaining = bikes.filter(bike => bike._id !== id);
-            setBikes(remaining);
-          }
-      })
-      window.location.reload();
+    if (user) {
+      const proceed = window.confirm("are you sure want to delete??");
+      if (proceed) {
+        console.log("deleting the id", id);
+        const url = `http://localhost:5000/inventory/${_id}`;
+        fetch(url, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (bike.deletedCount > 0) {
+              console.log("delete successfully");
+              const remaining = bikes.filter((bike) => bike._id !== id);
+              setBikes(remaining);
+            }
+          });
+        window.location.reload();
+      }
+    }
+    else{
+      navigate('/login')
     }
   };
   return (
@@ -40,9 +50,7 @@ const ManageInventory = ({ bike }) => {
         <div style={{ textAlign: "justify" }}>
           <p title={description}>
             <strong>Description</strong>:{" "}
-            {description.length > 10
-              ? description.slice(0, 100) + "..."
-              : description}
+            {description.length > 10 ? description.slice(0, 100) + "..." : description}
           </p>
           <p>
             <strong>supplier name</strong>:{" "}

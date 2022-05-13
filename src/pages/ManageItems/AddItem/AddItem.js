@@ -1,51 +1,58 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading/Loading";
 
 const AddItem = () => {
-    const [user] =useAuthState(auth);
+  const [user] = useAuthState(auth);
+
   const handleAddBike = (event) => {
     event.preventDefault();
-    const bike = event.target.name.value;
+    const name = event.target.name.value;
     const description = event.target.description.value;
-    const supplier = event.target.supplier.value;
+    const supplier_name = event.target.supplier_name.value;
     const quantity = event.target.quantity.value;
-    console.log(quantity);
+    console.dir(quantity);
     const price = event.target.price.value;
-    console.log(price);
-    const img= event.target.img.value;
-    const email= event.target.email.value;
+    console.dir(price);
+    const img = event.target.img.value;
+    const email = event.target.email.value;
 
-   
-     const addBike = { bike, description,supplier,img,email,quantity,price };
-     console.log(addBike);
+    const addBike = {
+      name,
+      description,
+      supplier_name,
+      img,
+      email,
+      quantity,
+      price,
+    };
+    console.log(addBike);
 
     // // TODO:send the user post method to backend server
-    fetch("http://localhost:5000/newItem", {
+    fetch("http://localhost:5000/inventory", {
       method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify(addBike)
+      body: JSON.stringify(addBike),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(" success", data);
         alert("user added successfully  ..!!!");
-
         event.target.reset();
       });
   };
   return (
-    <div className="form-container">
+    <div className="addItem-container">
       <div>
-        <h2 className="form-title">Add Item</h2>
+        <h2 className="addItem-title">Add Item</h2>
         <form onSubmit={handleAddBike}>
-          <div className="input-group">
-          </div>
+          <div className="input-group"></div>
           <div className="input-group">
             <label style={{ fontSize: "19px" }} htmlFor="name">
-            bike Name
+              bike Name
             </label>
             <input
               style={{ fontSize: "18px" }}
@@ -72,7 +79,7 @@ const AddItem = () => {
             <input
               style={{ fontSize: "18px" }}
               type="text"
-              name="supplier"
+              name="supplier_name"
               required
             />
           </div>
@@ -91,7 +98,7 @@ const AddItem = () => {
             <label style={{ fontSize: "19px" }} htmlFor="name">
               quantity
             </label>
-            <input style={{ fontSize: "18px" }} type="number" name="quantity"  />
+            <input style={{ fontSize: "18px" }} type="number" name="quantity" />
           </div>
           <div className="input-group">
             <label style={{ fontSize: "19px" }} htmlFor="name">
@@ -108,9 +115,11 @@ const AddItem = () => {
             <label style={{ fontSize: "19px" }} htmlFor="name">
               User mail
             </label>
-            <input type="email" value={user?.email} name="email" readOnly/>
+            <input type="email" value={user?.email} name="email" readOnly />
           </div>
-          <button type="submit" >Add User</button>
+          <button className="newBike-btn" type="submit">
+            Add
+          </button>
         </form>
       </div>
     </div>

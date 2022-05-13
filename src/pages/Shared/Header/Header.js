@@ -11,8 +11,8 @@ const Header = () => {
     <div>
       <nav>
         <CustomLink to="/">Home</CustomLink>
-        <CustomLink to="/inventory">Manage Inventories</CustomLink>
-        {user ? (
+        <CustomLink to="/inventory"><p style={{marginLeft:"15px"}}>Manage Items</p></CustomLink>
+        {user? (
           <nav>
             <CustomLink to="/additem">Add item</CustomLink>
             <CustomLink to="/myitems">Myitems</CustomLink>

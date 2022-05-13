@@ -7,10 +7,7 @@ import Loading from "../../Shared/Loading/Loading";
 const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
-  
-  
+    
   let errorElement;
   if (loading) {
     return <Loading></Loading>;
@@ -24,7 +21,9 @@ const SocialLogin = () => {
     );
   }
   if (user) {
-    navigate(from, { replace: true });
+    // console.dir(user.email);
+
+    navigate('/home');
   }
   return (
     <div>

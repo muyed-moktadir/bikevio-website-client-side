@@ -2,16 +2,17 @@ nav{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size:17px;
-    background-color: rgb(64, 178, 61);
+    font-size:14px;
+    background-color:  rgb(19, 129, 207);
     height: 80px;
     width: 100%;
+    
    }
 
    .btn-signOut{
-        width: 7%;
+        width: 40px;
         height: 40px;
-        background-color:rgb(55, 237, 231);
+        background-color:rgb(196, 241, 239);
         border-radius: 5px;
         border: none;
         font-size: 15px;

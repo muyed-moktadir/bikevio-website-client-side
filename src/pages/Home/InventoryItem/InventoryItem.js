@@ -5,6 +5,7 @@ import "./InventoryItem.css"
 const InventoryItem = ({bike}) => {
     const {_id,img,name,description,price,quantity,supplier_name} =bike;
     const navigate = useNavigate()
+
     // TODO:inventory Handle:
     const inventoryHandle = (id) =>{
         console.log('id',id);

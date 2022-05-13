@@ -4,7 +4,7 @@ import "./SafetyGear.css";
 const SafetyGear = () => {
   return (
     <div>
-      <h2>safety gear</h2>
+      <h1>Safety Gear</h1>
       <div className="safety-gear">
         <div>
           <p>

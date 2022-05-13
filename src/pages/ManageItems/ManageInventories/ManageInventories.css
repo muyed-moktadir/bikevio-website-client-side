@@ -1,4 +1,4 @@
-.services-container{
+.newBikes-container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2em;
@@ -8,9 +8,28 @@
     box-shadow: violet;
     width: auto;
     margin-top:50px;
+    margin-bottom: 80px;
   }
+  .newBike-btn{
+    background: #4ec7299c;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+
+.newBike-btn p{
+    font-weight: bold;
+    font-size: large;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.newBike-btn:hover{
+    background-color: orange;
+}
   @media screen and (max-width: 600px) {
-    .services-container {
+    .newBikes-container {
       display: grid;
       grid-template-columns: repeat(1, 1fr);
       justify-items: center;

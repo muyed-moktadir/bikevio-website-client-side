@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef} from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   useSendPasswordResetEmail,
@@ -9,11 +9,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import auth from "../../../firebase.init";
 import axios from "axios";
-
+import Loading from "../../Shared/Loading/Loading";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -24,37 +24,46 @@ const Login = () => {
 
   const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
-  // const handleEmailBlur = (event) => {
-  //   setEmail(event.target.value);
-  //   console.log(email);
-  // };
-
-  // const handlePasswordBlur = (event) => {
-  //   setPassword(event.target.value);
-  //   console.log(password)
-  // };
+  if (loading) {
+    return <Loading></Loading>;
+  }
 
   if (user) {
     navigate(from, { replace: true });
-    console.log(user);
+    console.dir(user);
   }
 
-  const handleUserLogIn =async (event) => {
+  const handleUserLogIn = async (event) => {
     event.preventDefault();
 
-     await signInWithEmailAndPassword(email, password);
-    console.log(email,password);
-    const {data} = await axios.post('http://localhost:5000/login',{email})
-    localStorage.setItem('accessToken',data.accessToken)
-     navigate(from, { replace: true });
-   
+    const email = emailRef.current.value;
+    // console.dir(email);
+
+    const password = passwordRef.current.value;
+    // console.log(password);
+
+    await signInWithEmailAndPassword(email, password);
+    console.dir(email, password);
+    const { data } = await axios.post("http://localhost:5000/login", { email });
+    console.dir(data);
+    localStorage.setItem("accessToken", data.accessToken);
+    navigate("/addItem");
   };
 
-  const resetEmail = (event) => {
+
+
+  const resetEmail = async (event) => {
     event.preventDefault();
-    sendPasswordResetEmail(email);
-    toast("Mail sent");
+    const email = emailRef.current.value;
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast("Mail sent");
+    } else {
+      toast("please enter your email address");
+    }
   };
+
+
 
   return (
     <div className="form-container">
@@ -69,7 +78,8 @@ const Login = () => {
               style={{ fontSize: "18px" }}
               // onBlur={handleEmailBlur}
               type="email"
-              name="email"
+              // name="email"
+              ref={emailRef}
               required
             />
           </div>
@@ -81,18 +91,21 @@ const Login = () => {
               style={{ fontSize: "18px" }}
               // onBlur={handlePasswordBlur}
               type="password"
-              name="password"
+              // name="password"
+              ref={passwordRef}
               required
             />
           </div>
           {errorElement}
-          <p style={{ color: "red" }}>{error?.message}</p>
+          <div>
           {loading && <p>Loading...</p>}
+          </div>
+          
           <input className="form-submit" type="submit" value="Login" />
         </form>
         <p style={{ fontSize: "17px" }}>
           New to Here?{" "}
-          <Link className="form-link" to={'/register'}>
+          <Link className="form-link" to={"/register"}>
             Create an account
           </Link>
           <p>

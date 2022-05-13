@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 
 const useBikevioItems = () => {
   const [bikes, setBikes] = useState([]);
-  console.log(bikes)
+  console.dir(bikes);
 
   useEffect(() => {
-    fetch("http://localhost:5000/inventory")
+    fetch("http://localhost:5000/inventory/")
       .then((res) => res.json())
       .then((data) => setBikes(data));
   }, []);

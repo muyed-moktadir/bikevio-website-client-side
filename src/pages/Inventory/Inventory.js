@@ -19,9 +19,9 @@ const Inventory = () => {
 
   const handleDeliver = (id) => {
     //   event.preventDefault()
-    console.log("object", id);
+    console.dir("object", id);
     const newQuantity = quantity - 1;
-    console.log("new quantity", newQuantity);
+    console.dir("new quantity", newQuantity);
     const updateQuantity = { newQuantity };
 
     // TODO:send the particular quantity "PUT" method to server

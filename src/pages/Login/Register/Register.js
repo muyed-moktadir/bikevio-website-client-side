@@ -1,50 +1,51 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSendEmailVerification,
+} from "react-firebase-hooks/auth";
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
+import Loading from "../../Shared/Loading/Loading";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import "./Register.css";
 
 const Register = () => {
-  const [setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const [createUserWithEmailAndPassword, user] =
+  const [createUserWithEmailAndPassword, user,loading] =
     useCreateUserWithEmailAndPassword(auth);
 
   const [sendEmailVerification] = useSendEmailVerification(auth);
 
-  const handleEmailBlur = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handleNameBlur = (event) => {
-    setName(event.target.value);
-  };
-
-  const handlePasswordBlur = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleConfirmPasswordBlur = (event) => {
-    setConfirmPassword(event.target.value);
-  };
-
+  if (loading) {
+    return <Loading></Loading>;
+  }
   if (user) {
     navigate(from, { replace: true });
   }
 
   const handleCreateUser = async (event) => {
     event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    setEmail(email);
+    console.log(name);
+    const password = event.target.password.value;
+    setPassword(password);
+    console.log(password);
+    const confirmPassword = event.target.confirmPassword.value;
+    console.log(confirmPassword);
     if (password.length < 4) {
       setError(toast("password must be 4 "));
+      console.log(name);
       return;
     }
     if (password !== confirmPassword) {
@@ -53,6 +54,11 @@ const Register = () => {
     }
     createUserWithEmailAndPassword(email, password);
     await sendEmailVerification();
+    // navigate("/logon");
+    const {data} = await axios.post('http://localhost:5000/login',{email})
+    console.log(data);
+    localStorage.setItem('accessToken',data.accessToken);
+    navigate(from, { replace: true });
   };
 
   return (
@@ -66,7 +72,7 @@ const Register = () => {
             </label>
             <input
               style={{ fontSize: "18px" }}
-              onBlur={handleNameBlur}
+              // onBlur={handleNameBlur}
               type="text"
               name="name"
               required
@@ -78,7 +84,7 @@ const Register = () => {
             </label>
             <input
               style={{ fontSize: "18px" }}
-              onBlur={handleEmailBlur}
+              // onBlur={handleEmailBlur}
               type="email"
               name="email"
               required
@@ -90,7 +96,7 @@ const Register = () => {
             </label>
             <input
               style={{ fontSize: "18px" }}
-              onBlur={handlePasswordBlur}
+              // onBlur={handlePasswordBlur}
               type="password"
               name="password"
               required
@@ -102,9 +108,9 @@ const Register = () => {
             </label>
             <input
               style={{ fontSize: "18px" }}
-              onBlur={handleConfirmPasswordBlur}
+              // onBlur={handleConfirmPasswordBlur}
               type="password"
-              name="confirm-your-password"
+              name="confirmPassword"
             />
           </div>
           <p style={{ fontSize: "15px", color: "blue" }}>{error}</p>

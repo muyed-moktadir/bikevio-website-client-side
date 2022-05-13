@@ -2,9 +2,10 @@ import React from "react";
 
 
 const MyItem = ({ newBike }) => {
+    const {bike,img,supplier_name,description,quantity,price} =newBike;
 
-    const {bike,img,supplier,description} =newBike;
-  return (
+
+    return (
     <div>
            <div className="bike-container">
       <div className="image">
@@ -16,17 +17,17 @@ const MyItem = ({ newBike }) => {
           <p title={description}>
             <strong>Description</strong>:{" "}
             {description.length > 10
-              ? description.slice(0, 100) + "..."
+              ?description.slice(0, 100) + "..."
               : description}
           </p>
           <p>
             <strong>supplier name</strong>:{" "}
-            <span style={{ color: "darkviolet" }}>{supplier}</span>
+            <span style={{ color: "darkviolet" }}>{supplier_name}</span>
           </p>
           <p>
-            <strong>quantity</strong>: 
+            <strong>quantity</strong>:${quantity} 
           </p>
-          <h3>price: $</h3>
+          <h3>price:$ {price}</h3>
         </div>
       </div>
       <div className="btn-container">

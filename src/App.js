@@ -15,6 +15,7 @@ import AddItem from "./pages/ManageItems/AddItem/AddItem";
 import Myitems from "./pages/ManageItems/myItems/Myitems";
 import MyItem from "./pages/ManageItems/MyItem/MyItem";
 import Blog from "./pages/Blog/Blog";
+import Loading from "./pages/Shared/Loading/Loading";
 
 function App() {
   return (
@@ -61,7 +62,9 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
+        <Route path="/loadling" element={<Loading></Loading>}></Route>
       </Routes>
+      
       <Footer></Footer>
       <ToastContainer />
     </div>
