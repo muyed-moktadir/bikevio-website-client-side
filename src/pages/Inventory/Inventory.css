@@ -13,3 +13,13 @@
 .btn-class p{
     margin:10px 15px 10px 15px;
 }
+
+@media screen and (max-width:600px){
+
+    .bike-description{
+        display: grid;
+        grid-template-columns: 1fr ;
+        align-items: center;
+        border: 2px solid red;
+    }
+}

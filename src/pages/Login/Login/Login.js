@@ -28,10 +28,7 @@ const Login = () => {
     return <Loading></Loading>;
   }
 
-  if (user) {
-    // console.log(user)
-  }
-
+  
   const handleUserLogIn = async (event) => {
     event.preventDefault();
     const email = emailRef.current.value;

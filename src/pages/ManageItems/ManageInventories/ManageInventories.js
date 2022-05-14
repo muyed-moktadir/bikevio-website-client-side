@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link} from "react-router-dom";
-import useBikevioItems from "../../../CustomHook/CustomHook";
 import Loading from "../../Shared/Loading/Loading";
 import ManageInventory from "../MangeInventory/ManageInventory";
 import "./ManageInventories.css";
