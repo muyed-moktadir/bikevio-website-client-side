@@ -7,7 +7,9 @@ import aos from "aos";
 import "aos/dist/aos.css";
 
 const AddItem = () => {
-  aos.init();
+  aos.init(
+    {duration: 600,}
+  );
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 

@@ -5,7 +5,9 @@ import { Link,useNavigate} from 'react-router-dom';
 import "./InventoryItem.css"
 
 const InventoryItem = ({bike}) => {
-    aos.init();
+    aos.init(
+        {duration: 600,}
+    );
     const {_id,img,name,description,price,quantity,supplier_name} =bike;
     const navigate = useNavigate()
 

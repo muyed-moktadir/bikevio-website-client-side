@@ -3,7 +3,9 @@ import aos from "aos";
 import "aos/dist/aos.css";
 
 const MyItem = ({ newBike }) => {
-  aos.init();
+  aos.init(
+    {duration: 600,}
+  );
   const { name, img, supplier_name, description, quantity, price } = newBike;
 
   return (

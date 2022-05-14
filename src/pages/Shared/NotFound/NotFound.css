@@ -1,0 +1,12 @@
+.notFoundPage img{
+    justify-content: center;
+    width: 530px;
+    height: 600px;
+}
+@media screen and (max-width:600px){
+    .notFoundPage img{
+        justify-content: center;
+        width:340px;
+        height: 405px;
+    }
+}

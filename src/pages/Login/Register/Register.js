@@ -14,7 +14,9 @@ import aos from "aos";
 import "aos/dist/aos.css";
 
 const Register = () => {
-  aos.init();
+  aos.init(
+    {duration: 500,}
+  );
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

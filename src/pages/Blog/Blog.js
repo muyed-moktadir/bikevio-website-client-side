@@ -3,7 +3,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "./blog.css"
 const Blog = () => {
-    AOS.init();
+    AOS.init(
+        {duration: 600,}
+    );
     return (
         <div className='blogs'>
             <div data-aos="fade-right" className='blog-summary'>

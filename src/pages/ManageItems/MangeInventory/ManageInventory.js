@@ -6,7 +6,9 @@ import aos from "aos";
 import "aos/dist/aos.css";
 
 const ManageInventory = ({ bike }) => {
-  aos.init();
+  aos.init(
+    {duration: 600,}
+  );
   const [bikes, setBikes] = useState([]);
   const { _id, img, name, description, price, quantity, supplier_name } = bike;
   const [user] = useAuthState(auth);

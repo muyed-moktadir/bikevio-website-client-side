@@ -6,14 +6,14 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAluYLDQlXXNh25klmN0j_dKKvS4heAUq8",
-  authDomain: "bikevio-newproject.firebaseapp.com",
-  projectId: "bikevio-newproject",
-  storageBucket: "bikevio-newproject.appspot.com",
-  messagingSenderId: "484274837511",
-  appId: "1:484274837511:web:94fe06ac3eed103a20f2a2"
-};
+  apiKey:process.env.REACT_APP_apiKey,
+  authDomain:process.env.REACT_APP_authDomain,
+  projectId:process.env.REACT_APP_projectId,
+  storageBucket:process.env.REACT_APP_storageBucket,
+  messagingSenderId:process.env.REACT_APP_messagingSenderId,
+  appId:process.env.REACT_APP_appId,
 
+}
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);

@@ -6,7 +6,9 @@ import "aos/dist/aos.css";
 import safetygear from "../../../images/safetygear.jpg";
 import "./SafetyGear.css";
 const SafetyGear = () => {
-  aos.init();
+  aos.init(
+    {duration: 600,}
+  );
   return (
     <div>
       <h1>Safety Gear</h1>

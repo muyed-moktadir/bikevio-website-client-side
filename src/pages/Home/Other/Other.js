@@ -3,7 +3,9 @@ import aos from "aos";
 import "aos/dist/aos.css";
 import "./Other.css"
 const Other = () => {
-  aos.init();
+  aos.init(
+    {duration: 700,}
+  );
   return (
     <div className="other">
       <div data-aos="slide-up" className="other-summary">
