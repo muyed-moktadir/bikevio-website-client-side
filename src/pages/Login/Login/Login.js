@@ -42,7 +42,7 @@ const Login = () => {
 
 // TODO: access token post
     await signInWithEmailAndPassword(email, password);
-    const { data } = await axios.post("http://localhost:5000/login", { email });
+    const { data } = await axios.post("https://rocky-coast-85375.herokuapp.com/login", { email });
     localStorage.setItem("accessToken", data.accessToken);
     navigate("/addItem");
   };

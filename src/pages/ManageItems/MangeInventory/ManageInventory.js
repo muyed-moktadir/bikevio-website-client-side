@@ -16,7 +16,7 @@ const ManageInventory = ({ bike }) => {
 
   // TODO:Load all bikes from (app.get) api:
   useEffect(() => {
-    fetch("http://localhost:5000/inventory")
+    fetch("https://rocky-coast-85375.herokuapp.com/inventory")
       .then((res) => res.json())
       .then((data) => setBikes(data));
   }, []);
@@ -26,7 +26,7 @@ const ManageInventory = ({ bike }) => {
       const proceed = window.confirm("are you sure want to delete??");
       if (proceed) {
         console.log("deleting the id", id);
-        const url = `http://localhost:5000/inventory/${_id}`;
+        const url = `https://rocky-coast-85375.herokuapp.com/inventory/${_id}`;
         fetch(url, {
           method: "DELETE",
         })

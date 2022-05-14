@@ -60,7 +60,7 @@ const Register = () => {
     createUserWithEmailAndPassword(email, password);
     await sendEmailVerification();
     // navigate("/logon");
-    const { data } = await axios.post("http://localhost:5000/login", { email });
+    const { data } = await axios.post("https://rocky-coast-85375.herokuapp.com/login", { email });
     console.log(data);
     localStorage.setItem("accessToken", data.accessToken);
     navigate(from, { replace: true });

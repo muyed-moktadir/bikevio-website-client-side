@@ -9,7 +9,7 @@ const ManageInventories = () => {
   const [bikes,setBikes] = useState([]) 
   
   useEffect(() => {
-    fetch("http://localhost:5000/inventory/")
+    fetch("https://rocky-coast-85375.herokuapp.com/inventory/")
       .then((res) => res.json())
       .then((data) => setBikes(data));
   }, [bikes]);

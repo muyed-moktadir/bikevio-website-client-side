@@ -25,6 +25,7 @@ const AddItem = () => {
     const img = event.target.img.value;
     const email = event.target.email.value;
 
+
     const addBike = {
       name,
       description,
@@ -36,8 +37,10 @@ const AddItem = () => {
     };
     console.log(addBike);
 
+
+
     // // TODO:send the user post method to backend server
-    fetch("http://localhost:5000/inventory", {
+    fetch("https://rocky-coast-85375.herokuapp.com/inventory", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -50,9 +53,11 @@ const AddItem = () => {
         alert("user added successfully  ..!!!");
         event.target.reset();
       });
-
       navigate('/myitems');
   };
+
+  
+
   return (
     <div data-aos="zoom-in" className="addItem-container">
       <div>

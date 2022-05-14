@@ -8,12 +8,14 @@ const Myitems = () => {
   const [user] = useAuthState(auth);
   const [newBikes, setNewBikes] = useState([]);
 
+
+  // TODO:
   useEffect(() => {
     const getMyItems = async () => {
       const email = user.email;
 
       if (email) {
-        const url = `http://localhost:5000/inventory?email=${email}`;
+        const url = `https://rocky-coast-85375.herokuapp.com/inventory?email=${email}`;
         // console.dir(url);
           fetch(url, {
             headers: {
@@ -30,6 +32,7 @@ const Myitems = () => {
   if (newBikes.length < 1) {
     return <Loading></Loading>;
   }
+
 
   return (
     <div>

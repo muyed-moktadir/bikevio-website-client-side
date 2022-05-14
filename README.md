@@ -1,7 +1,7 @@
 # The BikeVio Website
 
-[Client link]().
-[server link]().
+[Client link](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-muyed-moktadir).
+[server link](https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-muyed-moktadir).
 [StactOverFlow link](https://stackoverflow.com/questions/72178110/i-want-to-show-all-images-in-homepage-when-i-click-in-home-button-it-automatic).
 
 ## ` What i have done in my project`

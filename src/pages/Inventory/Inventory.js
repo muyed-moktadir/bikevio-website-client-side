@@ -9,13 +9,15 @@ const Inventory = () => {
   const { _id, name, quantity, img, description, supplier_name, price } = bike;
   console.log("single bike :", bike);
 
+  // TODO:fetch all bikes by id 
   useEffect(() => {
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://rocky-coast-85375.herokuapp.com/inventory/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBike(data));
   }, [quantity, id]);
 
+  
   const handleDeliver = (id) => {
     //   event.preventDefault()
     console.dir("object", id);
@@ -23,8 +25,9 @@ const Inventory = () => {
     console.dir("new quantity", newQuantity);
     const updateQuantity = { newQuantity };
 
+
     // TODO:send the particular quantity "PUT" method to server
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://rocky-coast-85375.herokuapp.com/inventory/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -54,7 +57,7 @@ const Inventory = () => {
     const newQuantity = parseInt(restock) + quantity;
     const updateQuantity = { newQuantity };
 
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://rocky-coast-85375.herokuapp.com/inventory/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
