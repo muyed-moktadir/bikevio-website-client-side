@@ -11,7 +11,7 @@ const Blog = () => {
             <div data-aos="fade-right" className='blog-summary'>
                 <h1>Difference between javascript and nodejs</h1>
                 <p align="justify">
-                JavaScript is a language that runs inside the web browser  and the documents loaded by the browser and is used as a client-side development language. It provides the behavior of the pages. Like HTML it provides the semantic structure.JavaScript running any engine like Spider monkey (FireFox), JavaScript Core (Safari), V8 (Google Chrome).
+                JavaScript is a language that runs inside the web browser  and the documents loaded by the browser and is used as a client-side development language. It provides the behavior of the pages. Like HTML it provides the semantic structure.JavaScript running any engine like FireFox, JavaScript Core Safari, V8 Google Chrome.
 
                 Node JS run V8 engine and which is used by google chrome. And javascript program which will be written under this Node JS will be always run in V8 Engine.
 
