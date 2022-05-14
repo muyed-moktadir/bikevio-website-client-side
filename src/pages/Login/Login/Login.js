@@ -1,4 +1,6 @@
-import React, { useRef} from "react";
+import React, { useRef } from "react";
+import aos from "aos";
+import "aos/dist/aos.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   useSendPasswordResetEmail,
@@ -7,9 +9,9 @@ import {
 import "./Login.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import auth from "../../../firebase.init";
 import axios from "axios";
 import Loading from "../../Shared/Loading/Loading";
+import auth from "../../../firebase.init";
 
 const Login = () => {
   const emailRef = useRef("");
@@ -19,37 +21,31 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
   let errorElement;
 
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, user, loading] =
     useSignInWithEmailAndPassword(auth);
-
   const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
-
   if (loading) {
     return <Loading></Loading>;
   }
 
   if (user) {
-    navigate(from, { replace: true });
-    console.dir(user);
+    // console.log(user)
   }
 
   const handleUserLogIn = async (event) => {
     event.preventDefault();
-
     const email = emailRef.current.value;
     // console.dir(email);
 
     const password = passwordRef.current.value;
     // console.log(password);
 
+// TODO: access token post
     await signInWithEmailAndPassword(email, password);
-    console.dir(email, password);
     const { data } = await axios.post("http://localhost:5000/login", { email });
-    console.dir(data);
     localStorage.setItem("accessToken", data.accessToken);
     navigate("/addItem");
   };
-
 
 
   const resetEmail = async (event) => {
@@ -62,11 +58,9 @@ const Login = () => {
       toast("please enter your email address");
     }
   };
-
-
-
+  aos.init();
   return (
-    <div className="form-container">
+    <div  data-aos="zoom-in" className="form-container">
       <div>
         <h2 className="form-title">Please Login</h2>
         <form onSubmit={handleUserLogIn}>
@@ -97,10 +91,8 @@ const Login = () => {
             />
           </div>
           {errorElement}
-          <div>
-          {loading && <p>Loading...</p>}
-          </div>
-          
+          <div>{loading && <p>Loading...</p>}</div>
+
           <input className="form-submit" type="submit" value="Login" />
         </form>
         <p style={{ fontSize: "17px" }}>

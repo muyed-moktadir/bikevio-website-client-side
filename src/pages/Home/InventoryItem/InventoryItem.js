@@ -1,8 +1,11 @@
 import React from 'react';
+import aos from "aos";
+import "aos/dist/aos.css";
 import { Link,useNavigate} from 'react-router-dom';
 import "./InventoryItem.css"
 
 const InventoryItem = ({bike}) => {
+    aos.init();
     const {_id,img,name,description,price,quantity,supplier_name} =bike;
     const navigate = useNavigate()
 
@@ -13,11 +16,11 @@ const InventoryItem = ({bike}) => {
     }
 
     return (
-        <div className='bike-container'>
-            <div className='image'>
+        <div  className='bike-container'>
+            <div data-aos="zoom-in" className='image'>
                 <img src={img} alt="" />
             </div>
-            <div  className='bike-details'>
+            <div data-aos="fade-right" className='bike-details'>
                 <h2>{name}</h2>
                 <div style={{textAlign:'justify'}}>
                 <p title={description}><strong>Description</strong>: {description.length > 10? description.slice(0,100) +'...': description}</p>

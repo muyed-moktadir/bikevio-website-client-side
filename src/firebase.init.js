@@ -6,16 +6,17 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC-9LxQ6AICMWwQ92cgDnrj9AtLRleGi2Y",
-  authDomain: "bikevio-project.firebaseapp.com",
-  projectId: "bikevio-project",
-  storageBucket: "bikevio-project.appspot.com",
-  messagingSenderId: "124004630223",
-  appId: "1:124004630223:web:24dee7d6794953528dc1ba"
+  apiKey: "AIzaSyAluYLDQlXXNh25klmN0j_dKKvS4heAUq8",
+  authDomain: "bikevio-newproject.firebaseapp.com",
+  projectId: "bikevio-newproject",
+  storageBucket: "bikevio-newproject.appspot.com",
+  messagingSenderId: "484274837511",
+  appId: "1:484274837511:web:94fe06ac3eed103a20f2a2"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app)
+const auth = getAuth(app);
 
 export default auth;
+

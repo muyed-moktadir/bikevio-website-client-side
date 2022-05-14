@@ -6,8 +6,7 @@ import "./Inventory.css";
 const Inventory = () => {
   const { id } = useParams();
   const [bike, setBike] = useState([]);
-//   const [quantity1, setQuantity] = useState("");
-  const { _id,name, quantity,img, description, supplier_name, price } = bike;
+  const { _id, name, quantity, img, description, supplier_name, price } = bike;
   console.log("single bike :", bike);
 
   useEffect(() => {
@@ -15,7 +14,7 @@ const Inventory = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBike(data));
-  }, [quantity,id]);
+  }, [quantity, id]);
 
   const handleDeliver = (id) => {
     //   event.preventDefault()
@@ -49,19 +48,17 @@ const Inventory = () => {
       });
   };
 
-
-const handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const restock = event.target.restock.value
+    const restock = event.target.restock.value;
     const newQuantity = parseInt(restock) + quantity;
-    // console.log("object", newRestock);
-    const updateQuantity = {newQuantity};
+    const updateQuantity = { newQuantity };
 
     const url = `http://localhost:5000/inventory/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
       body: JSON.stringify(updateQuantity),
     })
@@ -77,7 +74,7 @@ const handleSubmit = (event) => {
           supplier_name,
           price,
         });
-        toast("restock successfully..!!")
+        toast("restock successfully..!!");
       });
   };
 

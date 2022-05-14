@@ -1,10 +1,15 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
-import Loading from "../../Shared/Loading/Loading";
+import "./Additem.css"
+import aos from "aos";
+import "aos/dist/aos.css";
 
 const AddItem = () => {
+  aos.init();
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
 
   const handleAddBike = (event) => {
     event.preventDefault();
@@ -43,9 +48,11 @@ const AddItem = () => {
         alert("user added successfully  ..!!!");
         event.target.reset();
       });
+
+      navigate('/myitems');
   };
   return (
-    <div className="addItem-container">
+    <div data-aos="zoom-in" className="addItem-container">
       <div>
         <h2 className="addItem-title">Add Item</h2>
         <form onSubmit={handleAddBike}>
@@ -117,9 +124,7 @@ const AddItem = () => {
             </label>
             <input type="email" value={user?.email} name="email" readOnly />
           </div>
-          <button className="newBike-btn" type="submit">
-            Add
-          </button>
+          <button className="add-newBike-btn" type="submit"><p>add Item</p></button>
         </form>
       </div>
     </div>

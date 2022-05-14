@@ -4,15 +4,17 @@ import {
   useCreateUserWithEmailAndPassword,
   useSendEmailVerification,
 } from "react-firebase-hooks/auth";
-
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../../firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import "./Register.css";
+import aos from "aos";
+import "aos/dist/aos.css";
 
 const Register = () => {
+  aos.init();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -20,9 +22,8 @@ const Register = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const [createUserWithEmailAndPassword, user,loading] =
+  const [createUserWithEmailAndPassword, user, loading] =
     useCreateUserWithEmailAndPassword(auth);
-
   const [sendEmailVerification] = useSendEmailVerification(auth);
 
   if (loading) {
@@ -48,21 +49,23 @@ const Register = () => {
       console.log(name);
       return;
     }
+
     if (password !== confirmPassword) {
       setError("passwords did not match");
       return;
     }
+
     createUserWithEmailAndPassword(email, password);
     await sendEmailVerification();
     // navigate("/logon");
-    const {data} = await axios.post('http://localhost:5000/login',{email})
+    const { data } = await axios.post("http://localhost:5000/login", { email });
     console.log(data);
-    localStorage.setItem('accessToken',data.accessToken);
+    localStorage.setItem("accessToken", data.accessToken);
     navigate(from, { replace: true });
   };
 
   return (
-    <div className="form-container">
+    <div data-aos="zoom-in" className="form-container">
       <div>
         <h2 className="form-title">Registration</h2>
         <form onSubmit={handleCreateUser}>

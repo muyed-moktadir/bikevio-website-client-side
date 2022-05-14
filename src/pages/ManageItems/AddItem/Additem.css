@@ -12,112 +12,89 @@
     margin-top: 50px;
     height: auto;
     margin-bottom: 80px;
-    background-color: #f0f4d9;
+    background-color: #f0eade;
 }
 
 .addItem-title {
-    font-size: 35px;
-    color: #2A414F;
-    font-weight: 400;
+  font-size: 35px;
+  color: #2a414f;
+  font-weight: 400;
 }
 
-.input-group{
-    margin-bottom: 20px;
+.input-group {
+  margin-bottom: 20px;
 }
 
 .input-group label {
-    display: block;
-    margin-left: 5px;
+  display: block;
+  font-size: auto;
 }
 
 .input-group input {
-    width: 415px;
-    height: 55px;
-    border: 1px solid #95A0A7;
+  width: 415px;
+  height: 40px;
+  border: 1px solid #86bee0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 18px;
+  justify-content: center;
+}
+
+.add-newBike-btn {
+  width: 130px;
+  margin-top: 20px;
+  background-color: rgb(232, 165, 117);
+  border: none;
+  border-radius: 20px;
+}
+
+.add-newBike-btn p{
+    font-size: 16px;
+}
+.add-newBike-btn:hover {
+  background-color: rgb(204, 138, 39);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .addItem-container {
+    width: auto;
+    height: auto;
+    margin: 50px;
+    border: 2px solid rosybrown;
+    margin-bottom: 80px;
+  }
+  .input-group {
+    font-size: auto;
+  }
+
+  .add-newBike-btn {
+    width: 100px;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 20px;
+  }
+  
+  .add-newBike-btn p{
+      font-size: auto;
+      margin: 0px;
+  }  
+  .addItem-title {
+    font-size: auto;
+    color: #2a414f;
+    font-weight: auto;
+  }
+  .input-group {
+    margin-bottom: auto;
+  }
+  .input-group input {
+    width: auto;
+    height: auto;
+    border: 1px solid #95a0a7;
     box-sizing: border-box;
     border-radius: 5px;
-    font-size: 24px;
-    padding-left: 5px;
-}
-
-.addItem-submit{
-    width: 415px;
-    height: 55px;
-    background-color: rgba(255, 153, 0, 0.3);
-    border-radius: 5px;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-}
-.addItem-submit:hover{
-    background-color: rgba(255, 153, 0, 0.5);
-}
-
-.addItem-link{
-    color: #FF9900;
-    text-decoration: none;
-}
-
-.reset-btn{
-    width: 35%;
-    height: 25px;
-    background-color: rgba(33, 134, 185, 0.3);
-    border-radius: 5px;
-    border: none;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-
-@media screen and (max-width:600px){
-    .addItem-container{
-        width: auto;
-        height: 380px;
-        margin: 50px;
-        border: 2px solid rosybrown;
-        margin-bottom: 80px;
-        
-    }
-    .input-group{
-            font-size: auto;
-    }
-    .reset-btn{
-        width: auto;
-    height: auto;
-    }
-    .addItem-title {
-        font-size: auto;
-        color: #2A414F;
-        font-weight: auto;
-    }
-    .input-group{
-        margin-bottom: auto;
-    }
-    .input-group input {
-        width: auto;
-        height: auto;
-        border: 1px solid #95A0A7;
-        box-sizing: border-box;
-        border-radius: 5px;
-        font-size: auto;
-        padding-left: auto;
-    }
-    .addItem-submit{
-        width: auto;
-        height: auto;
-        margin-top: 20px;
-        background-color: rgb(228, 138, 68);
-        border-radius: 5px;
-        border: none;
-        font-size: auto;
-        cursor: pointer;
-    }
-    .addItem-submit:hover{
-        background-color: rgba(122, 109, 89, 0.5);
-    }
-    
-    .addItem-link{
-        color: #FF9900;
-        text-decoration: none;
-    }
+    font-size: auto;
+    padding-left: auto;
   }
+}

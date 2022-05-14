@@ -1,9 +1,12 @@
 import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import "./blog.css"
 const Blog = () => {
+    AOS.init();
     return (
         <div className='blogs'>
-            <div data-aos="fade-left" className='blog-summary'>
+            <div data-aos="fade-right" className='blog-summary'>
                 <h1>Difference between javascript and nodejs</h1>
                 <p align="justify">
                 JavaScript is a language that runs inside the web browser  and the documents loaded by the browser and is used as a client-side development language. It provides the behavior of the pages. Like HTML it provides the semantic structure.JavaScript running any engine like Spider monkey (FireFox), JavaScript Core (Safari), V8 (Google Chrome).
@@ -12,7 +15,7 @@ const Blog = () => {
 
                 </p>
             </div>
-            <div data-aos="fade-right"  className='blog-summary'>
+            <div data-aos="fade-left"  className='blog-summary'>
                 <h1>  What is the purpose of jwt and how does it work</h1>
                 <p align="justify"> JSON stands for JavaScript Object Notation and is a text-based format for transmitting data across web applications. It is easy to access the stores information for developers and computers.and which is  used as a data format by any programming language and is quickly becoming the preferred syntax for APIs, surpassing XML.
 

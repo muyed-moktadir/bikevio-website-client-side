@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
+import aos from "aos";
+import "aos/dist/aos.css";
 
 const ManageInventory = ({ bike }) => {
+  aos.init();
   const [bikes, setBikes] = useState([]);
   const { _id, img, name, description, price, quantity, supplier_name } = bike;
   const [user] = useAuthState(auth);
@@ -42,7 +45,7 @@ const ManageInventory = ({ bike }) => {
   };
   return (
     <div className="bike-container">
-      <div className="image">
+      <div data-aos="zoom-in" className="image">
         <img src={img} alt="" />
       </div>
       <div className="bike-details">
