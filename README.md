@@ -9,7 +9,7 @@
 * there also two component showing on bottom 
 * there is a another section which is called manage Items and where shows all items
 *in this project there is a update button where items quantity increase and decrease but this work will be done when user logged in.
-*`JWT` token  for email/password based authentication and add loading spinner 
+*JWT token  for email/password based authentication and add loading spinner 
 *there is another section where user can add his own item also show him/his items
 * in blogs showing the following 3 question's answer
 * A not found page (404) show in the project
